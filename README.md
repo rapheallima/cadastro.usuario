@@ -51,29 +51,24 @@ Criar uma interface de **perfil de usuário** com:
 
 ## Configure o banco MySQL:
 
-### sql
-
- ```bash
+```sql
 CREATE DATABASE usuarios_db;
+```
 
 ## Altere as credenciais em application.properties:
-
-### ini
-
- ```bash
+```properties
 spring.datasource.username=SEU_USUARIO
 spring.datasource.password=SUA_SENHA
+```
 
 ## Rode o projeto com o Spring Boot:
-
-### arduino
-
- ```bash
+```bash
 ./mvnw spring-boot:run
+```
 
 ## Teste no Postman:
-
- ```bash
+```http
 GET: http://localhost:8080/usuario
 
 POST: http://localhost:8080/usuario
+```
