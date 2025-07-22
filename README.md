@@ -49,35 +49,31 @@ Criar uma interface de **perfil de usuário** com:
    git clone https://github.com/seu-usuario/seu-repo.git
    cd backend
 
-Configure o banco MySQL:
+## Configure o banco MySQL:
 
-sql
+### sql
 
+ ```bash
 CREATE DATABASE usuarios_db;
 
-Altere as credenciais em application.properties:
+## Altere as credenciais em application.properties:
 
-ini
+### ini
 
+ ```bash
 spring.datasource.username=SEU_USUARIO
 spring.datasource.password=SUA_SENHA
 
-Rode o projeto com o Spring Boot:
+## Rode o projeto com o Spring Boot:
 
-arduino
+### arduino
 
+ ```bash
 ./mvnw spring-boot:run
 
-Teste no Postman:
+## Teste no Postman:
 
+ ```bash
 GET: http://localhost:8080/usuario
 
 POST: http://localhost:8080/usuario
-
-✅ Status
-
- Backend funcional
-
- Frontend em desenvolvimento
-
- Deploy
