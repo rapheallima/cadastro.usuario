@@ -1,6 +1,7 @@
 package com.raphael.perfil.usuario.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,14 @@ public class UsuarioService {
 			return repository.save(usuario);
 		}
 		return repository.save(usuario);
+	}
+
+	public Optional<Usuario> buscarPorId(Long id) {
+		return repository.findById(id);
+	}
+
+	public void deletarPorId(Long id) {
+		repository.deleteById(id);
 	}
 
 }

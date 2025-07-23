@@ -1,19 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { buscarUsuario, salvarUsuario } from "../services/usuarioService";
+import {
+  buscarUsuario,
+  buscarUsuarioPorId,
+  salvarUsuario,
+  deletarUsuario,
+} from "../services/usuarioService";
+import "./Perfil.css";
+
+const usuarioVazio = {
+  nome: "",
+  idade: "",
+  rua: "",
+  bairro: "",
+  estado: "",
+  biografia: "",
+  imagemUrl: "",
+};
 
 function Perfil() {
-  const [usuario, setUsuario] = useState({
-    nome: "",
-    idade: "",
-    rua: "",
-    bairro: "",
-    estado: "",
-    biografia: "",
-    imagemUrl: "",
-  });
+  const [usuario, setUsuario] = useState(usuarioVazio);
   const [loading, setLoading] = useState(true);
   const [editando, setEditando] = useState(false);
   const [error, setError] = useState(null);
+  const [idBusca, setIdBusca] = useState("");
+  const [mensagem, setMensagem] = useState("");
 
   useEffect(() => {
     async function carregar() {
@@ -45,19 +55,92 @@ function Perfil() {
     }
   }
 
+  async function handleBuscarPorId() {
+    if (!idBusca) {
+      setMensagem("Digite um ID para buscar.");
+      return;
+    }
+    setLoading(true);
+    try {
+      const dados = await buscarUsuarioPorId(idBusca);
+      setUsuario(dados);
+      setMensagem("Usuário carregado com sucesso.");
+      setEditando(false);
+    } catch (err) {
+      setMensagem(err.message);
+      setUsuario(usuarioVazio);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function handleNovoCadastro() {
+    setUsuario(usuarioVazio);
+    setEditando(true);
+    setMensagem("Criando novo usuário.");
+  }
+
+  async function handleDeletar() {
+    if (!usuario.id) {
+      alert("Nenhum usuário carregado para deletar.");
+      return;
+    }
+    if (window.confirm("Tem certeza que deseja deletar este usuário?")) {
+      try {
+        await deletarUsuario(usuario.id);
+        alert("Usuário deletado com sucesso.");
+        setUsuario(usuarioVazio);
+        setEditando(false);
+      } catch (err) {
+        alert("Erro ao deletar: " + err.message);
+      }
+    }
+  }
+
   if (loading) return <p>Carregando...</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
 
   return (
-    <div>
-      <h1>Perfil do Usuário</h1>
+    <div className="perfil-container">
+      <h1 className="titulo">Perfil do Usuário</h1>
+
+      <div style={{ marginBottom: 16 }}>
+        <input
+          type="number"
+          placeholder="ID do usuário"
+          value={idBusca}
+          onChange={(e) => setIdBusca(e.target.value)}
+          style={{ marginRight: 8 }}
+        />
+        <button onClick={handleBuscarPorId} className="botao editar">
+          Buscar por ID
+        </button>
+        <button
+          onClick={handleNovoCadastro}
+          className="botao editar"
+          style={{ marginLeft: 8 }}
+        >
+          Novo Usuário
+        </button>
+        <button
+          onClick={handleDeletar}
+          className="botao"
+          style={{ backgroundColor: "#dc3545", color: "white", marginLeft: 8 }}
+          disabled={!usuario.id}
+        >
+          Deletar
+        </button>
+      </div>
+
       <img
-        src={usuario.imageUrl || "https://via.placeholder.com/150"}
+        src={
+          usuario.imagemUrl || "https://randomuser.me/api/portraits/men/1.jpg"
+        }
         alt="Foto do perfil"
-        width="150"
-        height="150"
+        className="foto-perfil"
       />
-      <form onSubmit={handleSubmit}>
+
+      <form className="formulario" onSubmit={handleSubmit}>
         <label>
           Nome:
           <input
@@ -113,11 +196,23 @@ function Perfil() {
             disabled={!editando}
           />
         </label>
-        <button type="button" onClick={() => setEditando(!editando)}>
-          {editando ? "Cancelar" : "Editar"}
-        </button>
-        {editando && <button type="submit">Salvar</button>}
+
+        <div className="botoes">
+          <button
+            type="button"
+            onClick={() => setEditando(!editando)}
+            className="botao editar"
+          >
+            {editando ? "Cancelar" : "Editar"}
+          </button>
+          {editando && (
+            <button type="submit" className="botao salvar">
+              Salvar
+            </button>
+          )}
+        </div>
       </form>
+      {mensagem && <p style={{ marginTop: 10 }}>{mensagem}</p>}
     </div>
   );
 }
