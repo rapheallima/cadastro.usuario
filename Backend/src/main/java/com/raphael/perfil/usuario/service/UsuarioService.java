@@ -1,5 +1,7 @@
 package com.raphael.perfil.usuario.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.raphael.perfil.usuario.model.Usuario;
@@ -14,8 +16,8 @@ public class UsuarioService {
 		this.repository = repository;
 	}
 
-	public Usuario getUsuario() {
-		return repository.findAll().stream().findFirst().orElse(null);
+	public List<Usuario> getUsuarios() {
+		return repository.findAll();
 	}
 
 	public Usuario salvarouAtualizar(Usuario usuario) {

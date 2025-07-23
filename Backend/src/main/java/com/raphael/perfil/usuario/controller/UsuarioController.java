@@ -1,5 +1,7 @@
 package com.raphael.perfil.usuario.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,9 +23,9 @@ public class UsuarioController {
 		this.service = service;
 	}
 
-	@GetMapping
-	public Usuario getUsuario() {
-		return service.getUsuario();
+	@GetMapping("/usuario")
+	public List<Usuario> listarUsuarios() {
+		return service.getUsuarios();
 	}
 
 	@PostMapping
