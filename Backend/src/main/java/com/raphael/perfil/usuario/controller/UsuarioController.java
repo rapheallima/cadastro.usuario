@@ -23,7 +23,7 @@ public class UsuarioController {
 		this.service = service;
 	}
 
-	@GetMapping("/usuario")
+	@GetMapping
 	public List<Usuario> listarUsuarios() {
 		return service.getUsuarios();
 	}
