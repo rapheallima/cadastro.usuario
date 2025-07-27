@@ -134,7 +134,10 @@ function Perfil() {
 
       <img
         src={
-          usuario.imagemUrl || "https://randomuser.me/api/portraits/men/1.jpg"
+          usuario.imagemUrl ||
+          `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(
+            usuario.nome || "User"
+          )}`
         }
         alt="Foto do perfil"
         className="foto-perfil"

@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8080/usuario";
+const BASE_URL = "https://cadastro-usuario-mq6y.onrender.com/usuario";
 
 export async function buscarUsuario() {
   const response = await fetch(BASE_URL);
