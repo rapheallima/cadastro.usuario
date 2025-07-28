@@ -51,6 +51,36 @@ textarea {
   min-height: 60px;
 }
 
+@media (max-width: 644px) {
+
+  .botoes {
+    width: 100%;   
+  }
+
+  .botao.editar {
+    width: 94%;
+    font-size: 1.1rem;
+    margin: 8px;
+  }
+
+  .botao {
+    width: 94%;
+    font-size: 1.1rem;
+    margin: 8px;
+  }
+
+  .inputId input {
+    width: 93%;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .perfil-container {
+    padding: 70px;
+  }
+}
+
 .botoes {
   display: flex;
   justify-content: flex-end;

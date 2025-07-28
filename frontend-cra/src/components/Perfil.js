@@ -104,8 +104,8 @@ function Perfil() {
     <div className="perfil-container">
       <h1 className="titulo">Perfil do Usuário</h1>
 
-      <div style={{ marginBottom: 16 }}>
-        <input
+      <div className="inputId" style={{ marginBottom: 16 }}>
+        <input        
           type="number"
           placeholder="ID do usuário"
           value={idBusca}
