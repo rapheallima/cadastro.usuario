@@ -1,6 +1,8 @@
 # 🧑‍💻 Perfil de Usuário – Desafio Fullstack
 
 Este projeto é uma aplicação fullstack desenvolvida para o desafio técnico da Sync360. O objetivo é permitir a visualização e edição de um perfil de usuário, com salvamento das informações em um banco de dados MySQL.
+
+
 OBS: (O fron-end está hospedado na Vercel, o link está aqui ao lado direito, o back-end/banco de dados está na Render no plano grátuito então pode levar alguns segundos para abrir, por favor aguarde ou tente novamente)
 
 ## 🎯 Objetivo
