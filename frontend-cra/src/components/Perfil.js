@@ -104,13 +104,12 @@ function Perfil() {
     <div className="perfil-container">
       <h1 className="titulo">Perfil do Usuário</h1>
 
-      <div className="inputId" style={{ marginBottom: 16 }}>
+      <div className="inputId">
         <input        
           type="number"
           placeholder="ID do usuário"
           value={idBusca}
           onChange={(e) => setIdBusca(e.target.value)}
-          style={{ marginRight: 8 }}
         />
         <button onClick={handleBuscarPorId} className="botao editar">
           Buscar por ID
@@ -118,14 +117,12 @@ function Perfil() {
         <button
           onClick={handleNovoCadastro}
           className="botao editar"
-          style={{ marginLeft: 8 }}
         >
           Novo Usuário
         </button>
         <button
           onClick={handleDeletar}
           className="botao"
-          style={{ backgroundColor: "#dc3545", color: "white", marginLeft: 8 }}
           disabled={!usuario.id}
         >
           Deletar

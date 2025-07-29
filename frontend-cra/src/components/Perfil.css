@@ -79,6 +79,10 @@ textarea {
   .perfil-container {
     padding: 70px;
   }
+
+  .foto-perfil {
+    margin-top: 22px;
+  }
 }
 
 .botoes {
@@ -94,14 +98,23 @@ textarea {
   border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
+  background-color:#dc3545; 
+  color: white;
+  margin-left: 8px;
 }
 
 .botao.editar {
   background-color: #f0ad4e;
   color: white;
+  margin-left: 8px;
 }
 
 .botao.salvar {
   background-color: #28a745;
   color: white;
+}
+
+.inputId input {
+  margin-bottom: 16px;
+  margin-right: 8px;
 }
