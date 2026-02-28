@@ -1,4 +1,4 @@
-const BASE_URL = "https://cadastro-usuario-mq6y.onrender.com/usuario";
+const BASE_URL = "https://69a31c45be843d692bd2f8f1.mockapi.io/usuarios";
 
 export async function buscarUsuario() {
   const response = await fetch(BASE_URL);
